@@ -71,6 +71,14 @@ Shown below are the default advanced settings, but they can overridden.
     set(:postgresql_user) { application }
     set(:postgresql_database) { "#{application}_production" }
 
+### MySQL
+	set :mysql_host, "localhost"
+	set(:mysql_user) { application }
+	set(:mysql_database) { "#{application}_production" }
+
+	set(:mysql_password) { Capistrano::CLI.password_prompt "MySQL Password: " }
+	set(:mysql_root_password) { Capistrano::CLI.password_prompt "ROOT MySQL Password: " }
+
 ### Ruby
 
     set :ruby_version, "1.9.3-p125"

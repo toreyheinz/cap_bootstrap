@@ -4,6 +4,8 @@
 	* This is foundational for future changes to add other recipes (e.g. mysql) which would be alternatives that the user could control.
 	* This also allows the user to more easily control partial re-runs if they encounter a problem, just want to reinstall a specific part, or only want to run setups for a second application on a box that has already been installed to.
 
+* Add recipe / template for MySQL
+
 0.2 / 2012-04-02
 ================
 * task for tailing rails production logs, cap tail_logs

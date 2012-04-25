@@ -30,6 +30,7 @@ namespace :deploy do
     base
     nginx::install
     postgresql::install
+    # mysql::install
     nodejs::install
     rbenv::install
     security::setup_firewall
@@ -40,8 +41,10 @@ namespace :deploy do
     nginx::setup
     postgresql::create_database
     postgresql::setup
+    # mysql::setup
     unicorn::setup
   end
 end
 
 after "deploy:finalize_update", "postgresql:symlink"
+# after "deploy:finalize_update", "mysql:symlink"
