@@ -37,10 +37,24 @@ The application name defaults to the same name as your rails app and the reposit
 
     rails g cap_bootstrap:install 99.99.99.99
 
-Double check the settings in config/deploy.rb and then run:
+Double check the settings in config/deploy.rb.  If there are certain recipes you don't want to run (for example, you'd prefer to configure the firewall yourself), then just comment out the calls invoking those recipes in deploy.rb.
 
-    cap deploy:install
-    cap deploy:setup
+To do a complete install and setup of packages, run
+
+	cap deploy:all
+
+This is generally what you will do for a new VPS that you are using for the first time.
+
+To only do installation of software:
+
+	cap deploy:install
+
+To only do setup/configuration of software:
+
+	cap deploy:setup
+
+After installation and setup are complete
+
     cap deploy:cold
 
 ## Advanced Options

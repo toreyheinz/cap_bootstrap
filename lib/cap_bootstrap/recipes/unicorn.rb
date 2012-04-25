@@ -15,7 +15,6 @@ Capistrano::Configuration.instance(:must_exist).load do
       run "#{sudo} mv /tmp/unicorn_init /etc/init.d/unicorn_#{application}"
       run "#{sudo} update-rc.d -f unicorn_#{application} defaults"
     end
-    after "deploy:setup", "unicorn:setup"
 
     %w[start stop restart].each do |command|
       desc "#{command} unicorn"

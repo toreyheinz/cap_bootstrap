@@ -16,3 +16,32 @@ default_run_options[:pty] = true
 ssh_options[:forward_agent] = true
 
 after "deploy", "deploy:cleanup" # keep only the last 5 releases
+
+namespace :deploy do
+
+  desc "Install and setup everything"
+  task :all do
+    install
+    setup
+  end
+
+  desc "Install everything onto the server"
+  task :install do
+    base
+    nginx::install
+    postgresql::install
+    nodejs::install
+    rbenv::install
+    security::setup_firewall
+  end
+
+  desc "complete setup of all packages"
+  task :setup do
+    nginx::setup
+    postgresql::create_database
+    postgresql::setup
+    unicorn::setup
+  end
+end
+
+after "deploy:finalize_update", "postgresql:symlink"
