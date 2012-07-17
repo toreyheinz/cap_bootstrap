@@ -33,7 +33,7 @@ namespace :deploy do
     # mysql::install
     nodejs::install
     rbenv::install
-    security::setup_firewall
+    security::install::firewall
   end
 
   desc "complete setup of all packages"
@@ -43,8 +43,10 @@ namespace :deploy do
     postgresql::setup
     # mysql::setup
     unicorn::setup
+    security::setup::secret_token
   end
 end
 
 after "deploy:finalize_update", "postgresql:symlink"
 # after "deploy:finalize_update", "mysql:symlink"
+after "deploy:finalize_update", "security:setup:symlink"
