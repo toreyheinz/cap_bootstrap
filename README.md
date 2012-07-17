@@ -28,15 +28,15 @@ set a password and just press ENTER to use default values for other inputs.
 #### Setting up SSH keys
 You can avoid a lot of (annoying) typing of the deployer users password by setting up SSH keys.  Assuming you already have them setup (for github, etc), you can copy them over by:
 
-    ssh deployer@178.xxx.xxx.xxx
+    ssh deployer@xxx.xxx.xxx.xxx
     mkdir ~/.ssh
     chmod 700 ~/.ssh
-    cat ~/.ssh/id_rsa.pub | ssh deployer@178.xxx.xxx.xxx 'cat >> ~/.ssh/authorized_keys'
+    cat ~/.ssh/id_rsa.pub | ssh deployer@xxx.xxx.xxx.xxx 'cat >> ~/.ssh/authorized_keys'
     chmod 600 ~/.ssh/authorized_keys
 
 To test that this worked, disconnect and then try
 
-    ssh deployer@178.xxx.xxx.xxx
+    ssh deployer@xxx.xxx.xxx.xxx
 
 you should connect without being asked for a password.
 
