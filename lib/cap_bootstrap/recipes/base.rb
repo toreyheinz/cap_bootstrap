@@ -8,6 +8,10 @@ Capistrano::Configuration.instance(:must_exist).load do
     set(name, *args, &block) unless exists?(name)
   end
 
+  def remote_file_exists?(full_path)
+    'true' ==  capture("if [ -e #{full_path} ]; then echo 'true'; fi").strip
+  end
+  
   namespace :deploy do
     desc "Initial preparation for installation"
     task :base do
