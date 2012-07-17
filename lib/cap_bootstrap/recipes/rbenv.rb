@@ -5,7 +5,6 @@ Capistrano::Configuration.instance(:must_exist).load do
   namespace :rbenv do
     desc "Install rbenv, Ruby, and the Bundler gem"
     task :install, roles: :app do
-      run "#{sudo} apt-get -y install curl git-core"
       run "curl -L https://raw.github.com/fesplugas/rbenv-installer/master/bin/rbenv-installer | bash"
       bashrc = <<-BASHRC
   if [ -d $HOME/.rbenv ]; then 
