@@ -38,9 +38,9 @@ Capistrano::Configuration.instance(:must_exist).load do
 
     desc "Create a database and userfor this application."
     task :create_database_and_user, roles: :db, only: {primary: true} do
-      run %Q{mysql --user=root --password=#{mysql_root_password} --execute="drop database if exists #{mysql_database}"}
-      run %Q{mysql --user=root --password=#{mysql_root_password} --execute="create database #{mysql_database}"}
-      run %Q{mysql --user=root --password=#{mysql_root_password} --execute="grant all on #{mysql_database}.* to '#{mysql_user}'@'localhost' identified by '#{mysql_password}'"}
+      run %Q{mysql --user=root --password='#{mysql_root_password}' --execute="drop database if exists #{mysql_database}"}
+      run %Q{mysql --user=root --password='#{mysql_root_password}' --execute="create database #{mysql_database}"}
+      run %Q{mysql --user=root --password='#{mysql_root_password}' --execute="grant all on #{mysql_database}.* to '#{mysql_user}'@'localhost' identified by '#{mysql_password}'"}
     end
 
     desc "Generate the database.yml configuration file."
