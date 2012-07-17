@@ -13,6 +13,33 @@ I am not affiliated with Railscasts, I'm just a fan.
 * Capistrano
 * Fresh Ubuntu 10.04 or 11.10 install
 
+### Ubuntu Setup
+#### Building a clean VPS
+Before you run any of the scripts below, you need to ensure that your VPS is property prepared.  On Linode this means rebuilding the VPS (from their web based management console) and setting a root password.
+
+#### Creating a deployer user
+The scripts in cap_bootstrap connect to your VPS as 'deployer' and then sudo when needed.  Since a 'deployer' user does not exist by default, we need to create one.
+
+    ssh root@xxx.xxx.xxx.xxx
+    adduser deployer --ingroup admin
+
+set a password and just press ENTER to use default values for other inputs.
+
+#### Setting up SSH keys
+You can avoid a lot of (annoying) typing of the deployer users password by setting up SSH keys.  Assuming you already have them setup (for github, etc), you can copy them over by:
+
+    ssh deployer@178.xxx.xxx.xxx
+    mkdir ~/.ssh
+    chmod 700 ~/.ssh
+    cat ~/.ssh/id_rsa.pub | ssh deployer@178.xxx.xxx.xxx 'cat >> ~/.ssh/authorized_keys'
+    chmod 600 ~/.ssh/authorized_keys
+
+To test that this worked, disconnect and then try
+
+    ssh deployer@178.xxx.xxx.xxx
+
+you should connect without being asked for a password.
+
 ## Installation
 
 Add these lines to your application's Gemfile:
