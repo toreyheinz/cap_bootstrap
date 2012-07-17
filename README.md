@@ -31,7 +31,13 @@ You can avoid a lot of (annoying) typing of the deployer users password by setti
     ssh deployer@xxx.xxx.xxx.xxx
     mkdir ~/.ssh
     chmod 700 ~/.ssh
+
+in another terminal session (running on your local machine)
+
     cat ~/.ssh/id_rsa.pub | ssh deployer@xxx.xxx.xxx.xxx 'cat >> ~/.ssh/authorized_keys'
+
+then back on your VPS
+
     chmod 600 ~/.ssh/authorized_keys
 
 To test that this worked, disconnect and then try
