@@ -114,7 +114,7 @@ Shown below are the default advanced settings, but they can overridden.
 
 ### Ruby
 
-    set :ruby_version, "1.9.3-p125"
+    set :ruby_version, "1.9.3-p194"
     set :rbenv_bootstrap, "bootstrap-ubuntu-10-04" # Or bootstrap-ubuntu-11-10
 
 ### Unicorn
