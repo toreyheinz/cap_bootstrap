@@ -21,8 +21,9 @@ namespace :deploy do
 
   desc "Install and setup everything"
   task :all do
-    install
     setup
+    install
+    configure
   end
 
   desc "Install everything onto the server"
@@ -36,8 +37,8 @@ namespace :deploy do
     security::install::firewall
   end
 
-  desc "complete setup of all packages"
-  task :setup do
+  desc "complete configuration of all packages"
+  task :configure do
     nginx::setup
     postgresql::create_database
     postgresql::setup
