@@ -8,9 +8,6 @@ Capistrano::Configuration.instance(:must_exist).load do
   namespace :unicorn do
     desc "Setup Unicorn initializer and app configuration"
     task :setup, roles: :app do
-      run "mkdir -p #{shared_path}/config"
-      run "mkdir -p #{shared_path}/log"
-      run "mkdir -p #{shared_path}/pids"
       template "unicorn.rb.erb", unicorn_config
       template "unicorn_init.erb", "/tmp/unicorn_init"
       run "chmod +x /tmp/unicorn_init"
