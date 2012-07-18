@@ -76,7 +76,7 @@ To do a complete install and setup of packages, run
 
 	cap deploy:all
 
-This is generally what you will do for a new VPS that you are using for the first time.
+This is generally what you will do for a new VPS that you are using for the first time.  Basically, it runs a normal deploy:setup (which creates directories, etc) and then installs and configures software packages
 
 To only do installation of software:
 
@@ -84,7 +84,7 @@ To only do installation of software:
 
 To only do setup/configuration of software:
 
-	cap deploy:setup
+	cap deploy:configure
 
 After installation and setup are complete
 
