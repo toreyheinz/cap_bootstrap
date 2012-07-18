@@ -17,8 +17,6 @@ Capistrano::Configuration.instance(:must_exist).load do
     namespace :setup do
       desc "Create a secret_token file if one doesn't exist"
       task :secret_token, roles: :web do
-        run "mkdir -p #{shared_path}/config"
-
         secret_token_path = "#{shared_path}/config/secret_token.rb"
         unless remote_file_exists?(secret_token_path)
           template "secret_token.erb", secret_token_path

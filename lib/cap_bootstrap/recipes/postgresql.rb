@@ -20,7 +20,6 @@ Capistrano::Configuration.instance(:must_exist).load do
 
     desc "Generate the database.yml configuration file."
     task :setup, roles: :app do
-      run "mkdir -p #{shared_path}/config"
       template "postgresql.yml.erb", "#{shared_path}/config/database.yml"
     end
 
