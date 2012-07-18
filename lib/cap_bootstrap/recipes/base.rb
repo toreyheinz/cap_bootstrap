@@ -13,13 +13,21 @@ Capistrano::Configuration.instance(:must_exist).load do
   end
   
   namespace :deploy do
-    desc "Initial preparation for installation"
-    task :base do
-      run "#{sudo} bash -c 'echo UTC > /etc/timezone'"
-      run "#{sudo} cp /usr/share/zoneinfo/UTC /etc/localtime"
-      run "#{sudo} dpkg-reconfigure -f noninteractive tzdata"
-      run "#{sudo} apt-get -y update"
-      run "#{sudo} apt-get -y install curl git-core python-software-properties"
+    namespace :base do
+
+      desc "Initial preparation for installation"
+      task :install do
+        run "#{sudo} bash -c 'echo UTC > /etc/timezone'"
+        run "#{sudo} cp /usr/share/zoneinfo/UTC /etc/localtime"
+        run "#{sudo} dpkg-reconfigure -f noninteractive tzdata"
+        run "#{sudo} apt-get -y update"
+        run "#{sudo} apt-get -y install curl git-core python-software-properties"
+      end
+
+      desc "Initial preparation for configuring software"
+      task :configure do
+        run "mkdir -p #{shared_path}/config"
+      end
     end
   end
 end

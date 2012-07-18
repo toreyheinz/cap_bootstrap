@@ -28,7 +28,7 @@ namespace :deploy do
 
   desc "Install everything onto the server"
   task :install do
-    base
+    base::install
     nginx::install
     postgresql::install
     # mysql::install
@@ -39,6 +39,7 @@ namespace :deploy do
 
   desc "complete configuration of all packages"
   task :configure do
+    base::configure
     nginx::setup
     postgresql::create_database
     postgresql::setup
