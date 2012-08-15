@@ -1,6 +1,6 @@
 # Cap Bootstrap
 
-Capistrano tasks for deploying Rails applications using Ubuntu 10.04, rbenv, nginx, Unicorn and PostgreSQL. Based on the excellent Railscasts by Ryan Bates, with permission of course. If you are new to Capistrano or setting up a VPS, I highly recommend subscribing to his pro screencasts and watching the following:
+Capistrano tasks for deploying Rails applications using Ubuntu 12.04, rbenv, nginx, Unicorn and PostgreSQL. Based on the excellent Railscasts by Ryan Bates, with permission of course. If you are new to Capistrano or setting up a VPS, I highly recommend subscribing to his pro screencasts and watching the following:
 
 * [Deploying to a VPS](http://railscasts.com/episodes/335-deploying-to-a-vps) (Pro)
 * [Capistrano Tasks](http://railscasts.com/episodes/133-capistrano-tasks-revised) (Free)
@@ -11,7 +11,7 @@ I am not affiliated with Railscasts, I'm just a fan.
 ## Requirements
 
 * Capistrano
-* Fresh Ubuntu 10.04 or 11.10 install
+* Fresh Ubuntu 12.04 install
 
 ### Ubuntu Setup
 #### Building a clean VPS
@@ -21,7 +21,7 @@ Before you run any of the scripts below, you need to ensure that your VPS is pro
 The scripts in cap_bootstrap connect to your VPS as 'deployer' and then sudo when needed.  Since a 'deployer' user does not exist by default, we need to create one.
 
     ssh root@xxx.xxx.xxx.xxx
-    adduser deployer --ingroup admin
+    adduser deployer --ingroup sudo
 
 set a password and just press ENTER to use default values for other inputs.
 
@@ -59,7 +59,7 @@ And then execute:
 
 ## Usage
 
-Setup a new Ubuntu 10.04 slice. Add a user called deployer with sudo privileges.
+Setup a new Ubuntu 12.04 slice. Add a user called deployer with sudo privileges.
 
 In your project, run the following:
 
