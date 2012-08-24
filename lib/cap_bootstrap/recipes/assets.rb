@@ -1,4 +1,5 @@
-# http://www.bencurtis.com/2011/12/skipping-asset-compilation-with-capistrano/
+Capistrano::Configuration.instance(:must_exist).load do
+  # http://www.bencurtis.com/2011/12/skipping-asset-compilation-with-capistrano/
   namespace :assets do
     task :precompile, :roles => :web, :except => { :no_release => true } do
       from = source.next_revision(current_revision)
@@ -10,3 +11,4 @@
       end
     end
   end
+end
