@@ -147,3 +147,4 @@ Also considering changes to allow deploying multiple apps onto a single server a
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
 
+Edited in Github
